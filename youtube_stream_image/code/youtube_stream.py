@@ -4,9 +4,9 @@ import subprocess
 YOUTUBE_LIVE_KEY = os.environ['YOUTUBE_LIVE_KEY']
 
 # avconv has the same functionality as ffmpeg
-STREAM_COMMAND = ["avconv", "-loglevel", "quiet", "-ar", "44100", "-ac", "2", "-f", "s16le", "-i", "/dev/zero", "-f", "video4linux2", "-s",
-                  "640x360", "-r", "10", "-i", "/dev/video0", "-f", "flv",
-                  "rtmp://a.rtmp.youtube.com/live2/{0}".format(YOUTUBE_LIVE_KEY)]
+STREAM_COMMAND = ["ffmpeg", "-loglevel", "quiet", "-ar", "44100", "-ac", "2", "-f", "s16le", "-i", "/dev/zero", "-f", "video4linux2", "-s",
+                  "640x640", "-r", "10", "-i", "/dev/video0", "-f", "h264",
+                   "rtmp://a.rtmp.youtube.com/live2/{0}".format(YOUTUBE_LIVE_KEY)]
 
 
 class YoutubeStream:
